@@ -39,7 +39,7 @@ class ProductController extends Controller
                 'is_available'=>$request->has('is_available')==true ? 1 : 0
             ]
         );
-        redirect("product-list")->with('status',"The Product is successfully created");
+        return redirect()->route("product-list")->with('status',"The Product is successfully created");
     }
 
     // ! For Editing Product 
@@ -63,13 +63,13 @@ class ProductController extends Controller
                 'is_available'=>$request->has('is_available')==true ? 1 : 0
             ]
         );
-        redirect("product-list")->with('status',"The Product is successfully updated");
+        return redirect()->route("product-list")->with('status',"The Product is successfully updated");
     }
 
     
     // ! For Deleting the Product 
     public function delete_product($id){
         Product::findOrFail($id)->delete();
-        redirect("product-list")->with('status',"The Product is successfully deleted");
+        return redirect()->route("product-list")->with('status',"The Product is successfully deleted");
     }
 }
